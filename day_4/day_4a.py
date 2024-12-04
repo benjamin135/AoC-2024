@@ -3,18 +3,6 @@ Tested using:
     python3 version 3.9.6
 
     
-PART ONE:
-
-Plan of attack:
-    1) 
-        
-
-PART TWO:
-
-Plan of attack:
-    1) 
-
-    
 """
 
 input_string_name = "day_4_input.txt"
@@ -36,15 +24,8 @@ input_list = input_string.replace('\n', '.').split(".")
 # mat is a list of lists
 mat = [list(row) for row in input_list]
 
-
-# ktest1 = list_of_lists[0][0]
-# test2 = list_of_lists[1][1]
-# test3 = list_of_lists[1][0]
-# test4 = list_of_lists[0][1]
-# test5 = list_of_lists[4][4]
-
 xmas_count = 0
-xmas_list = []
+xmas_list = []  # Used for debugging
 
 for i in range(len(mat)):
     for j in range(len(mat[i])):
@@ -116,4 +97,5 @@ for i in range(len(mat)):
             except IndexError:
                 pass
 
-pass
+print(xmas_count)
+pass    # Add a breakpoint here and run debugger to see values of all objects

@@ -3,18 +3,6 @@ Tested using:
     python3 version 3.9.6
 
     
-PART ONE:
-
-Plan of attack:
-    1) 
-        
-
-PART TWO:
-
-Plan of attack:
-    1) 
-
-    
 """
 
 input_string_name = "day_4_input.txt"
@@ -36,7 +24,6 @@ input_list = input_string.replace('\n', '.').split(".")
 # mat is a list of lists
 mat = [list(row) for row in input_list]
 
-
 xmas_count = 0
 
 for i in range(len(mat)):
@@ -44,7 +31,6 @@ for i in range(len(mat)):
         if mat[i][j] == "A":
 
             # Now do 4 individual cases:
-
 
             try:
                 if mat[i+1][j+1] == "M" and mat[i-1][j-1] == "S" and mat[i+1][j-1] == "M" and mat[i-1][j+1] == "S" and i-1 >= 0 and j-1 >= 0:
@@ -70,4 +56,5 @@ for i in range(len(mat)):
             except IndexError:
                 pass
 
-pass
+print(xmas_count)
+pass    # Add a breakpoint here and run debugger to see values of all objects

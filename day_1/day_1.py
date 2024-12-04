@@ -3,18 +3,6 @@ Tested using:
     python3 version 3.9.6
 
     
-PART ONE:
-
-Plan of attack:
-    1) 
-        
-
-PART TWO:
-
-Plan of attack:
-    1) 
-
-    
 """
 
 
@@ -38,19 +26,24 @@ right_numbers = []
 # Process the list
 for row in input_list:
     left, right = row.split('   ')  # Split by three spaces
-    left_numbers.append(int(left))  # Append to the left numbers list
-    right_numbers.append(int(right))  # Append to the right numbers list
+    left_numbers.append(int(left))
+    right_numbers.append(int(right))
 
 
 left_numbers.sort()
 right_numbers.sort()
 
 
+###### PART 1 ######
+
 diffs = [abs(value1 - value2) for index1, value1 in enumerate(left_numbers) for index2, value2 in enumerate(right_numbers) if index1 == index2]
 
 answer = sum(diffs)
+print(answer)
 
-pass
+pass    # Add a breakpoint here and run debugger to see values of all objects
+
+###### PART 2 ######
 
 similarity_score = 0
 
@@ -62,4 +55,5 @@ for left_item in left_numbers:
     similarity_score += frequency * left_item
         
 print(similarity_score)
-pass
+
+pass    # Add a breakpoint here and run debugger to see values of all objects

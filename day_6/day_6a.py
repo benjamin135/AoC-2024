@@ -14,8 +14,8 @@ Plan of attack:
 
 """
 
-# input_string_name = "./day_6/day_6_input.txt"
-input_string_name = "./day_6/day_6_input_test.txt"
+input_string_name = "./day_6/day_6_input.txt"
+# input_string_name = "./day_6/day_6_input_test.txt"
 
 
 # First read the contents of the input file into a list.
@@ -45,22 +45,46 @@ for r in range(len(mat)):
     if break_flag is True:
         break
 
-guard_direction = [-1,0]    # Guard always starts facing up
-step_count = 1              # Starting position is included in step_count
+compass = {
+    0: [-1,0],  # Facing up
+    1: [0,1],  # Facing right
+    2: [1,0],  # Facing down
+    3: [0,-1]   # Facing left
+}
+
+guard_turn_counter = 0
+guard_direction = compass[0]    # Guard always starts facing up
+visited_positions = [guard_position]    # Starting position is included in step_count
+
 
 while True:
 
     # Identify target coordinates for upcoming step
+    upcoming_position = [guard_position[0] + guard_direction[0], guard_position[1] + guard_direction[1]]
+    
+    # Determine if upcoming position is out of bounds. Exit loop if so.
+    if upcoming_position[0] not in range(len(mat)) or upcoming_position[1] not in range(len(mat[0])):
+        # Upcoming position is out of bounds.
+        break
 
-    # Determine if target coordinates contain a barrier
+    # Upcoming position is not out of bounds.
+    # Determine if upcoming position contains a barrier
+    if mat[upcoming_position[0]][upcoming_position[1]] == "#":
+        # Upcoming position contains a barrier!
+        # Guard needs to turn right, and step_count does not increment.
+        guard_turn_counter += 1
+        guard_direction = compass[guard_turn_counter % 4]
 
-    # If barrier, turn right (update guard_direction)
+    else:
+        # Upcoming position is open.
+        # Move guard forward and increment step_count
+        guard_position = upcoming_position
+        if guard_position not in visited_positions:
+            visited_positions.append(guard_position)
 
-    # If empty, step forward (update guard_position) and increment step_count.
 
-
-
-
+count_of_visited_positions = len(visited_positions)
+print(count_of_visited_positions)
 
 
 pass
